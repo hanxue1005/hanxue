@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+	body{
+		text-align:center;
+		font-size:60px;
+		color:#FFF;
+		background:#000;
+	}
+</style>
+<script>
+	function toDou(n){
+		return n<10 ? '0'+n : ''+n;	
+	}
+	
+	window.onload = function(){
+		var oDiv = document.getElementById('div1')
+		var oDate = new Date();
+		oDate.setFullYear(2016,12,1);
+		oDate.setHours(0,0,0,0);
+				
+		function clock(){
+			var oNew = new Date();
+			var sum = oDate.getTime() - oNew.getTime();
+			var s = parseInt(sum/1000%60);
+			var m = parseInt(sum/1000/60%60);
+			var h = parseInt(sum/1000/60/60%24);
+			var d = parseInt(sum/1000/60/60/24);
+			oDiv.innerHTML = toDou(d) +'天'+ toDou(h) +'小时'+ toDou(m) +'分钟'+ toDou(s) +'秒';
+		}
+		clock();
+		setInterval(clock,1000);		
+	};
+</script>
+</head>
+
+<body>
+<div>距离元旦还有：</div>
+<div id="div1"></div>
+</body>
+</html>
